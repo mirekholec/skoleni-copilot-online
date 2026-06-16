@@ -38,6 +38,8 @@ Vyber schéma z [./references/barvy.md](./references/barvy.md) na základě:
 - **Slate Pro** — pokud je požadována maximální důvěryhodnost, corporate vzhled, nebo srovnání s Jira/GitHub/Outlook
 - **Nordic Teal** — pokud je kladen důraz na svěžest, produktivitu nebo odlišení od generické modré; vhodné pro kalendářové aplikace
 
+Vždy se MUSÍŠ zeptat uživatele, jaké schéma preferuje
+
 ### 3. Navrhni konkrétní barvy
 
 Vždy používej CSS proměnné z [./references/barvy.md](./references/barvy.md). Příklad struktury:
