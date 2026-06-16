@@ -4,6 +4,9 @@ description: Agent specializující se na plánování kvalitního HTML kódu
 argument-hint: Popiš task
 tools: [vscode, execute, read, agent, search, web, browser, 'copilotspaces/*',  todo] 
 model: Claude Sonnet 4.6 (copilot)
+user-invocable: true
+disable-model-invocation: true
+agents: ["*"]
 handoffs: 
   - label: Začni implementaci
     agent: agent
