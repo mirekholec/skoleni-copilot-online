@@ -7,6 +7,9 @@ Applies to all agentic work and tool loops.
 - No recaps or summaries of completed work unless requested.
 - When prose is needed, use short bullets, not paragraphs.
 
+## Moduly aplikace
+Vždy když pracuješ v modulech modules/xxxxx tak si musíš přečíst relevantní instrukce z ondemant/....
+
 ## Klíčové instrukce
 
 Základní informace o projektu, struktuře a funkcí poskytuje soubor `README.md`. 
