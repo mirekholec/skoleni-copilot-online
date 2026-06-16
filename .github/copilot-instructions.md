@@ -8,7 +8,7 @@ Applies to all agentic work and tool loops.
 - When prose is needed, use short bullets, not paragraphs.
 
 ## Moduly aplikace
-Vždy když pracuješ v modulech modules/xxxxx tak si musíš přečíst relevantní instrukce z ondemant/....
+Vždy když pracuješ v modulech modules/[nazev] tak si musíš přečíst relevantní instrukce ze složky .github/ondemand-instructions/modull[nazev].md
 
 ## Klíčové instrukce
 
