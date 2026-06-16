@@ -17,7 +17,8 @@ const DEFAULT_CATEGORIES = [
     { id: 'personal', name: 'Osobní', icon: '🏠', color: '#F0AD4E' },
     { id: 'health', name: 'Zdraví & Sport', icon: '💪', color: '#5CB85C' },
     { id: 'family', name: 'Rodina', icon: '👨‍👩‍👧‍👦', color: '#E8913A' },
-    { id: 'education', name: 'Vzdělávání', icon: '📚', color: '#9B59B6' }
+    { id: 'education', name: 'Vzdělávání', icon: '📚', color: '#9B59B6' },
+    { id: 'golf', name: 'Golf', icon: '⛳', color: '#2ECC71' }
 ];
 
 const DEFAULT_SETTINGS = {
@@ -27,7 +28,7 @@ const DEFAULT_SETTINGS = {
     defaultReminderMinutes: 15,
     timeFormat: '24h',
     locale: 'cs-CZ',
-    activeCategories: ['work', 'personal', 'health', 'family', 'education']
+    activeCategories: ['work', 'personal', 'health', 'family', 'education', 'golf']
 };
 
 // ===== Stav aplikace =====
@@ -84,6 +85,27 @@ async function loadData() {
     } else {
         await loadSeedData();
     }
+}
+
+function getCookieValue(key) {
+    if (!key || typeof key !== 'string') return null;
+
+    const cookies = document.cookie.split(';');
+    for (const cookie of cookies) {
+        const eqIndex = cookie.indexOf('=');
+        if (eqIndex === -1) continue;
+
+        const name = cookie.substring(0, eqIndex).trim();
+        if (name !== key) continue;
+
+        const raw = cookie.substring(eqIndex + 1).trim();
+        try {
+            return decodeURIComponent(raw);
+        } catch {
+            return raw;
+        }
+    }
+    return null;
 }
 
 /** Načtení ukázkových dat z JSON souboru */
