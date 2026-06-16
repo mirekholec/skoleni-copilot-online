@@ -211,7 +211,7 @@ body { font-family: var(--font-family); font-size: 14px; line-height: 1.5; color
 }
 
 .calendar-header-cell.is-today .day-date {
-    background-color: #000000;
+    background-color: var(--color-primary);
     color: #ffffff;
     border-radius: 50%;
     width: 28px;

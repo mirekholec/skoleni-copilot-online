@@ -7,7 +7,7 @@
 - Přidána funkce `renderSidebarWeekInfo()` a formátování českého textu pro počet událostí.
 - Počet událostí respektuje aktivní kategorie a započítává i týdenní opakování.
 - Panel se překresluje při renderování kategorií a kalendáře.
-- Aktuální den má černé pozadí v sidebar panelu i v kalendářním zvýraznění.
+- Aktuální den má zvýrazněné datum v sidebar panelu a modré zvýraznění v hlavičce kalendáře.
 
 ## Ověření
 
