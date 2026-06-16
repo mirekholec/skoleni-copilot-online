@@ -172,6 +172,30 @@ body { font-family: var(--font-family); font-size: 14px; line-height: 1.5; color
     color: var(--color-text);
 }
 
+.sidebar-week-info {
+    margin-top: 16px;
+    padding: 14px 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: var(--radius);
+    background-color: rgba(51, 51, 51, 0.04);
+}
+
+.sidebar-today {
+    margin-bottom: 8px;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    background-color: #000000;
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.sidebar-week-count {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
 /* Kalendář – hlavička */
 .calendar-header-spacer {
     border-right: 1px solid var(--color-border);
@@ -187,7 +211,7 @@ body { font-family: var(--font-family); font-size: 14px; line-height: 1.5; color
 }
 
 .calendar-header-cell.is-today .day-date {
-    background-color: var(--color-primary);
+    background-color: #000000;
     color: #ffffff;
     border-radius: 50%;
     width: 28px;
@@ -252,6 +276,10 @@ body { font-family: var(--font-family); font-size: 14px; line-height: 1.5; color
 
 .day-column.is-today .hour-slot {
     background-color: var(--color-today);
+}
+
+.day-column.is-today .hour-slot:hover {
+    background-color: #d9e6fb;
 }
 
 .hour-slot:hover {

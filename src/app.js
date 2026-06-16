@@ -63,6 +63,8 @@ function cacheDomReferences() {
     dom.calendarBody = document.getElementById('calendarBody');
     dom.timeColumn = document.getElementById('timeColumn');
     dom.categoryList = document.getElementById('categoryList');
+    dom.sidebarToday = document.getElementById('sidebarToday');
+    dom.sidebarWeekCount = document.getElementById('sidebarWeekCount');
     dom.eventDetailModal = document.getElementById('eventDetailModal');
     dom.eventFormModal = document.getElementById('eventFormModal');
     dom.eventForm = document.getElementById('eventForm');
@@ -192,9 +194,44 @@ function generateId() {
 /** Překreslení celého kalendáře */
 function renderCalendar() {
     renderWeekInfo();
+    renderSidebarWeekInfo();
     renderCalendarHeader();
     renderTimeColumn();
     renderDayColumns();
+}
+
+/** Zobrazení aktuálního dne a počtu událostí v aktuálním týdnu v sidebaru */
+function renderSidebarWeekInfo() {
+    const today = new Date();
+    const weekStart = getMonday(today);
+    let eventCount = 0;
+
+    for (let i = 0; i < 7; i++) {
+        const date = new Date(weekStart);
+        date.setDate(date.getDate() + i);
+
+        eventCount += getEventsForDate(date).filter(event => (
+            state.settings.activeCategories.includes(event.category)
+        )).length;
+    }
+
+    const weekday = today.toLocaleDateString('cs-CZ', { weekday: 'long' });
+    const formattedWeekday = weekday.charAt(0).toUpperCase() + weekday.slice(1);
+    const formattedDate = today.toLocaleDateString('cs-CZ', {
+        day: 'numeric',
+        month: 'numeric',
+        year: 'numeric'
+    });
+
+    dom.sidebarToday.textContent = `${formattedWeekday}, ${formattedDate}`;
+    dom.sidebarWeekCount.textContent = formatEventCount(eventCount);
+}
+
+/** Vrátí český text pro počet událostí */
+function formatEventCount(count) {
+    if (count === 1) return '1 událost tento týden';
+    if (count >= 2 && count <= 4) return `${count} události tento týden`;
+    return `${count} událostí tento týden`;
 }
 
 /** Zobrazení informací o aktuálním týdnu v hlavičce */
@@ -406,6 +443,8 @@ function renderCategories() {
         item.appendChild(name);
         dom.categoryList.appendChild(item);
     });
+
+    renderSidebarWeekInfo();
 }
 
 /** Přepnutí viditelnosti kategorie */
@@ -419,6 +458,7 @@ function handleCategoryToggle(e) {
         state.settings.activeCategories = state.settings.activeCategories.filter(c => c !== categoryId);
     }
     saveSettings();
+    renderSidebarWeekInfo();
     renderCalendar();
 }
 
