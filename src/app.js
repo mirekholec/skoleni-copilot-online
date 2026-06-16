@@ -13,12 +13,12 @@ const DAY_NAMES = ['Pondělí', 'Úterý', 'Středa', 'Čtvrtek', 'Pátek', 'Sob
 const DAY_KEYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
 const DEFAULT_CATEGORIES = [
-    { id: 'work', name: 'Práce', icon: '💼', color: '#4A90D9' },
-    { id: 'personal', name: 'Osobní', icon: '🏠', color: '#F0AD4E' },
-    { id: 'health', name: 'Zdraví & Sport', icon: '💪', color: '#5CB85C' },
-    { id: 'family', name: 'Rodina', icon: '👨‍👩‍👧‍👦', color: '#E8913A' },
-    { id: 'education', name: 'Vzdělávání', icon: '📚', color: '#9B59B6' },
-    { id: 'golf', name: 'Golf', icon: '⛳', color: '#2ECC71' }
+    { id: 'work', name: 'Práce', icon: '💼', color: '#2563EB' },
+    { id: 'personal', name: 'Osobní', icon: '🏠', color: '#D97706' },
+    { id: 'health', name: 'Zdraví & Sport', icon: '💪', color: '#16A34A' },
+    { id: 'family', name: 'Rodina', icon: '👨‍👩‍👧‍👦', color: '#EA580C' },
+    { id: 'education', name: 'Vzdělávání', icon: '📚', color: '#7C3AED' },
+    { id: 'golf', name: 'Golf', icon: '⛳', color: '#0891B2' }
 ];
 
 const DEFAULT_SETTINGS = {
@@ -360,8 +360,10 @@ function createEventBlock(event) {
     block.className = 'event-block';
     block.style.top = `${top}px`;
     block.style.height = `${Math.max(height, 22)}px`;
-    block.style.backgroundColor = event.color;
+    const category = DEFAULT_CATEGORIES.find(cat => cat.id === event.category);
+    block.style.backgroundColor = category ? category.color : event.color;
     block.dataset.eventId = event.id;
+    block.dataset.priority = event.priority || 'medium';
 
     const title = document.createElement('span');
     title.className = 'event-title';
